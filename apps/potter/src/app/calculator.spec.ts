@@ -33,4 +33,11 @@ describe('Calculator', () => {
     expect(calculator.cal([1, 1, 1, 0, 1])).toBe(320);
     expect(calculator.cal([1, 1, 1, 1, 1])).toBe(375);
   });
+
+  test('Several Discounts', ()=>{
+    expect(calculator.cal([2, 1, 0, 0, 0])).toBe(290);
+    expect(calculator.cal([2, 2, 0, 0, 0])).toBe(380);
+    expect(calculator.cal([2, 1, 2, 1, 0])).toBe(510);
+    expect(calculator.cal([1, 2, 1, 1, 1])).toBe(475);
+  })
 });
