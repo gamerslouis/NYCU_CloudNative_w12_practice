@@ -40,4 +40,9 @@ describe('Calculator', () => {
     expect(calculator.cal([2, 1, 2, 1, 0])).toBe(510);
     expect(calculator.cal([1, 2, 1, 1, 1])).toBe(475);
   })
+
+  test('Edge Cases', ()=>{
+    expect(calculator.cal([2, 2, 2, 1, 1])).toBe(640);
+    expect(calculator.cal([5, 5, 4, 5, 4])).toBe(1765);
+  })
 });
