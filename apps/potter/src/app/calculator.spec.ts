@@ -12,18 +12,18 @@ describe('Calculator', () => {
   });
 
   it('should return origin price if only buy one book', () => {
-    expect(
-      calculator.cal({
-        a: 1,
-      })
-    ).toBe(100);
+    expect(calculator.cal([1, 0, 0, 0, 0])).toBe(100);
+    expect(calculator.cal([0, 1, 0, 0, 0])).toBe(100);
+    expect(calculator.cal([0, 0, 1, 0, 0])).toBe(100);
+    expect(calculator.cal([0, 0, 0, 1, 0])).toBe(100);
+    expect(calculator.cal([0, 0, 0, 0, 1])).toBe(100);
   });
 
   it('should return origin price if only buy one kind of books', () => {
-    expect(
-      calculator.cal({
-        a: 10
-      })
-    ).toBe(1000)
+    expect(calculator.cal([2, 0, 0, 0, 0])).toBe(200);
+    expect(calculator.cal([0, 3, 0, 0, 0])).toBe(300);
+    expect(calculator.cal([0, 0, 4, 0, 0])).toBe(400);
+    expect(calculator.cal([0, 0, 0, 5, 0])).toBe(500);
+    expect(calculator.cal([0, 0, 0, 0, 6])).toBe(600);
   });
 });
