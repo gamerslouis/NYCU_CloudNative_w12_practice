@@ -1,5 +1,14 @@
+type Books = { [name: string]: number };
+
+const BASE_PRICE = 100
+
 export class Calculator {
-  cal(arg0: { a: number }): number {
-    return 100;
+  cal(books: Books): number {
+    let totalPrice = 0
+    for(const book of Object.keys(books)){
+        const bookNum = books[book];
+        totalPrice += bookNum * BASE_PRICE
+    }
+    return totalPrice
   }
 }
