@@ -6,8 +6,9 @@ const DiscountRate = [0, 1, 0.95, 0.9, 0.8, 0.75];
 
 export class Calculator {
   cal(books: Books): number {
-    let bookqueue = [...books];
+    let bookqueue = books.filter((v) => v !== 0);
     bookqueue.sort();
+
     let totalPrice = 0;
 
     while (bookqueue.length > 0) {
@@ -15,30 +16,19 @@ export class Calculator {
         bookqueue = bookqueue.splice(1);
         continue;
       }
-      if (this.isAllSame(bookqueue)) {
-        totalPrice +=
-          BASE_PRICE *
-          DiscountRate[bookqueue.length] *
-          bookqueue.length *
-          bookqueue[0];
-        break;
-      } else {
-        totalPrice +=
-          BASE_PRICE *
-          DiscountRate[bookqueue.length] *
-          bookqueue.length *
-          bookqueue[0];
-        const toReduce = bookqueue[0];
-        bookqueue = bookqueue.map((val) => val - toReduce);
-      }
+      totalPrice += this.simpleDiscountTotal(bookqueue[0], bookqueue.length);
+      const toReduce = bookqueue[0];
+      bookqueue = bookqueue.map((val) => val - toReduce);
+      bookqueue = bookqueue.filter((v) => v !== 0);
     }
     return totalPrice;
   }
 
-  isAllSame(arr: Array<number>) {
-    for (const val of arr) {
-      if (val !== arr[0]) return false;
-    }
-    return true;
+  simpleDiscountTotal(numPerBook: number, numBookCategory: number) {
+    return (
+      BASE_PRICE *
+      DiscountRate[numBookCategory] *
+      (numPerBook * numBookCategory)
+    );
   }
 }
