@@ -12,8 +12,18 @@ describe('Calculator', () => {
   });
 
   it('should return origin price if only buy one book', () => {
-    expect(calculator.cal({
-      "a": 1
-    }));
-  })
+    expect(
+      calculator.cal({
+        a: 1,
+      })
+    ).toBe(100);
+  });
+
+  it('should return origin price if only buy one kind of books', () => {
+    expect(
+      calculator.cal({
+        a: 10
+      })
+    ).toBe(1000)
+  });
 });
