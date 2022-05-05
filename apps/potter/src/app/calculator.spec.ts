@@ -26,4 +26,11 @@ describe('Calculator', () => {
     expect(calculator.cal([0, 0, 0, 5, 0])).toBe(500);
     expect(calculator.cal([0, 0, 0, 0, 6])).toBe(600);
   });
+
+  test('Simple Discounts', () => {
+    expect(calculator.cal([1, 1, 0, 0, 0])).toBe(190);
+    expect(calculator.cal([1, 1, 0, 1, 0])).toBe(270);
+    expect(calculator.cal([1, 1, 1, 0, 1])).toBe(320);
+    expect(calculator.cal([1, 1, 1, 1, 1])).toBe(375);
+  });
 });
